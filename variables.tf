@@ -46,3 +46,7 @@ variable "FME_ADMIN_CRED" {
   type = string
   default = ""
 }
+variable "FME_APP_CRED" {
+  type = string
+  default = ""
+}

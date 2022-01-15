@@ -9,9 +9,10 @@ provider "google" {
 }
 
 resource "google_compute_network" "vpc_network" {  
-    project_id   = var.ADMIN_PROJECT
+    project   = var.ADMIN_PROJECT
     name = var.FME_NETWORK_NAME
     auto_create_subnetworks = false
+    mtu = 0
 }
 
 resource "google_compute_subnetwork" "public-subnetwork" {

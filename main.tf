@@ -3,7 +3,7 @@ provider "google" {
   project = var.ADMIN_PROJECT
   region  = "us-central1"
   zone    = "us-central1-c"
-  credentials = var.FME_ADMIN_CREDS
+  credentials = var.FME_ADMIN_CRED
 }
 resource "google_compute_network" "vpc_network" {
 name = "FME-network"

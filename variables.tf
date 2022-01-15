@@ -42,7 +42,7 @@ variable "MACHINE_IMAGE" {
   type = string
   default = ""
 }
-variable "FME_ADMIN_CREDS" {
+variable "FME_ADMIN_CRED" {
   type = string
   default = ""
 }

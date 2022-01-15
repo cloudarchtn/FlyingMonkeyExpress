@@ -6,6 +6,7 @@ provider "google" {
   credentials = var.FME_ADMIN_CRED
 }
 resource "google_compute_network" "vpc_network" {
+region = var.REGION  
 name = "fme-network"
 }
 resource "google_compute_subnetwork" "public-subnetwork" {

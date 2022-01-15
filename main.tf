@@ -6,7 +6,7 @@ provider "google" {
   credentials = var.FME_ADMIN_CRED
 }
 resource "google_compute_network" "vpc_network" {
-name = "FME-network"
+name = "fme-network"
 }
 resource "google_compute_subnetwork" "public-subnetwork" {
 name = "fme-subnet1"

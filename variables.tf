@@ -18,27 +18,27 @@ variable "MACHINE_TYPE" {
   type = string
   default = ""
 }
-variable " INSTANCE_NAME" {
+variable "INSTANCE_NAME" {
   type = string
   default = ""
 }
-variable " ADMIN_PROJECT" {
+variable "ADMIN_PROJECT" {
   type = string
   default = ""
 }
-variable " APP_PROJECT" {
+variable "APP_PROJECT" {
   type = string
   default = ""
 }
-variable " REGION" {
+variable "REGION" {
   type = string
   default = ""
 }
-variable " ZONE" {
+variable "ZONE" {
   type = string
   default = ""
 }
-variable " MACHINE_IMAGE" {
+variable "MACHINE_IMAGE" {
   type = string
   default = ""
 }

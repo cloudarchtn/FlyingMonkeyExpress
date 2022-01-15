@@ -1,4 +1,13 @@
 
+
+
+provider "google" {
+  project = var.ADMIN_PROJECT
+  region  = var.REGION
+  zone    = var.ZONE
+  credentials = var.FME_ADMIN_CRED
+}
+
 module "vpc" {
     source  = "terraform-google-modules/network/google//modules/vpc"
     version = "~> 4.0.1"
@@ -9,12 +18,6 @@ module "vpc" {
     shared_vpc_host = false
 }
 
-provider "google" {
-  project = var.ADMIN_PROJECT
-  region  = var.REGION
-  zone    = var.ZONE
-  credentials = var.FME_ADMIN_CRED
-}
 resource "google_compute_network" "vpc_network" {  
 name = var.FME_NETWORK_NAME
 }

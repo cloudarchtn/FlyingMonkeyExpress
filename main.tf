@@ -1,6 +1,6 @@
 
 provider "google" {
-  project = var.flyingmonkeyadmin
+  project = var.ADMIN_PROJECT
   region  = "us-central1"
   zone    = "us-central1-c"
   credentials = var.FME_ADMIN_CREDS

@@ -66,7 +66,7 @@ allow {
   target_tags = ["ssh"] 
 }
   ****************/
-  /***##### Create subnets ########/
+##### Create subnets ########
 
 resource "google_compute_subnetwork" "public-subnetwork-1" {
 name = var.FME_SN_1_NAME

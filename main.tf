@@ -46,6 +46,11 @@ region = var.REGION
 network = google_compute_network.vpc_network.name
 }
 
+resource "google_service_account" "default" {
+  account_id   = "service_account_id"
+  display_name = "Service Account"
+}
+
 ####### Create compute instances #####
 
 resource "google_compute_instance" "frontend" {

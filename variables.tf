@@ -3,6 +3,11 @@ variable "FME_NETWORK_NAME" {
   type = string
   default = ""
 }
+variable "FME_SN_1_NAME" {
+  type = string
+  default = ""
+}
+
 variable "FME_SN_1" {
   type = string
   default = ""

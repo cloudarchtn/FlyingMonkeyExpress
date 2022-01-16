@@ -50,7 +50,7 @@ network = google_compute_network.vpc_network.name
 ####### Create compute instances #####
 
 resource "google_compute_instance" "default" {
-  name         = "test"
+  name         = var.FME_FRONTEND_NAME
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE
   boot_disk {
@@ -68,7 +68,27 @@ resource "google_compute_instance" "default" {
     }
   }
 
-//  metadata = {foo = "bar"}
+//  metadata_startup_script = "echo hi > /test.txt"
+
+}
+resource "google_compute_instance" "default" {
+  name         = var.FME_BACKEND_NAME
+  machine_type = var.MACHINE_TYPE
+  zone         = var.ZONE
+  boot_disk {
+    initialize_params {
+      image = var.MACHINE_IMAGE
+    }
+  }
+
+  network_interface {
+    network = var.FME_NETWORK_NAME
+    subnetwork = var.FME_SN_3_NAME
+
+    access_config {
+       // Ephemeral public IP
+    }
+  }
 
 //  metadata_startup_script = "echo hi > /test.txt"
 

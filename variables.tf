@@ -1,4 +1,12 @@
 
+variable "FME_Firewall_Internal_Allow" {
+  type = string
+  default = "fme-fw-internal-allow"
+}
+variable "FME_Firewall_SSH_Allow" {
+  type = string
+  default = "fme-fw-ssh-allow"
+}
 variable "FME_FRONTEND_NAME" {
   type = string
   default = ""

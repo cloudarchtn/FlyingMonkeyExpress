@@ -57,7 +57,12 @@ allow {
   
   allow {
     protocol = "icmp"
-  }  
+  } 
+  
+  allow {
+    protocol = "udp"
+    ports    = ["0-65535"]
+  }
   
   target_tags = ["http"]
   source_ranges = ["0.0.0.0/0"]
@@ -71,7 +76,7 @@ resource "google_compute_firewall" "ssh-allow" {
   
 allow {
     protocol = "tcp"
-    ports    = ["22"]
+    ports    = ["22","442"]
   }
    
   allow {

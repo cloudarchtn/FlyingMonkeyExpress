@@ -59,11 +59,6 @@ resource "google_compute_instance" "default" {
     }
   }
 
-  // Local SSD disk
-  scratch_disk {
-    interface = "SCSI"
-  }
-
   network_interface {
     network = var.FME_NETWORK_NAME
     subnetwork = var.FME_SN_1_NAME

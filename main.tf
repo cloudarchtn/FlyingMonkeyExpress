@@ -1,6 +1,4 @@
 
-
-
 provider "google" {
   project = var.ADMIN_PROJECT
   region  = var.REGION

@@ -1,4 +1,12 @@
 
+variable "FME_FRONTEND_NAME" {
+  type = string
+  default = ""
+}
+variable "FME_BACKEND_NAME" {
+  type = string
+  default = ""
+}
 variable "FME_NETWORK_NAME" {
   type = string
   default = ""

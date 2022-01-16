@@ -18,6 +18,8 @@ resource "google_compute_network" "vpc_network" {
     mtu = 0
 }
 
+/********* Firewall ******************
+  ***********************************
 resource "google_compute_firewall" "internal-allow" {
   name = var.FME_Firewall_Internal_Allow
   network = google_compute_network.vpc_network.name
@@ -63,8 +65,8 @@ allow {
   }
   target_tags = ["ssh"] 
 }
-  
-  ##### Create subnets ########
+  ****************/
+  /***##### Create subnets ########/
 
 resource "google_compute_subnetwork" "public-subnetwork-1" {
 name = var.FME_SN_1_NAME
@@ -93,7 +95,7 @@ network = google_compute_network.vpc_network.name
 }
 
 
-####### Create compute instances #####
+/####### Create compute instances #####/
 
 resource "google_compute_instance" "default" {
   name         = var.FME_FRONTEND_NAME

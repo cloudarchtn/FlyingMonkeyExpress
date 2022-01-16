@@ -18,7 +18,56 @@ resource "google_compute_network" "vpc_network" {
     mtu = 0
 }
 
-##### Create subnets ########
+resource "google_compute_firewall" "internal-allow" {
+  network = google_compute_network.vpc_network.name
+  name = var.FME_Firewall_Internal_Allow
+  
+ allow {
+    protocol = "icmp"
+  }
+  allow {
+    protocol = "tcp"
+    ports    = ["0-65535"]
+  }
+  allow {
+    protocol = "udp"
+    ports    = ["0-65535"]
+  }
+  allow {
+    protocol = "ssh"
+    ports    = ["20,22"]
+    
+source_ranges = [
+    var.FME_SN_1,
+    var.FME_SN_2,
+    var.FME_SN_3,
+    var.FME_SN_4
+  ]
+  }
+
+resource "google_compute_firewall" "tcp-allow" {
+  network = google_compute_network.vpc_network.name
+  name = var.FME_Firewall_TCP_Allow
+  
+allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+  target_tags = ["http"] 
+}
+
+resource "google_compute_firewall" "ssh-allow" {
+  network = google_compute_network.vpc_network.name
+  name = var.FME_Firewall_SSH_Allow
+  
+allow {
+    protocol = "ssh"
+    ports    = ["20,22"]
+  }
+  target_tags = ["ssh"] 
+}
+  
+  ##### Create subnets ########
 
 resource "google_compute_subnetwork" "public-subnetwork-1" {
 name = var.FME_SN_1_NAME
@@ -54,7 +103,7 @@ resource "google_compute_instance" "default" {
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE
  
-  tags = ["http-server", "https-server"]
+  tags = ["http", "ssh"]
   
   boot_disk {
     initialize_params {
@@ -80,7 +129,7 @@ resource "google_compute_instance" "tpl" {
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE
   
-  tags = ["http-server", "https-server"]
+  tags = ["http"]
   
   boot_disk {
     initialize_params {

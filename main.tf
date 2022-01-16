@@ -115,6 +115,15 @@ network = google_compute_network.vpc_network.name
 
 ######## enable Shared VPC. #############
 
+resource "google_project_service" "host_project" {
+  project = google_project.host_project.project_id
+  service = "compute.googleapis.com"
+}
+resource "google_project_service" "service_project_1" {
+  project = google_project.service_project_1.project_id
+  service = "compute.googleapis.com"
+}
+
 # Enable shared VPC hosting in the host project.
 resource "google_compute_shared_vpc_host_project" "host_project" {
   project    = var.ADMIN_PROJECT

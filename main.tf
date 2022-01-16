@@ -52,8 +52,13 @@ resource "google_compute_firewall" "tcp-allow" {
   
 allow {
     protocol = "tcp"
-    ports    = ["80"]
+    ports    = ["80", "8080"]
   }
+  
+  allow {
+    protocol = "icmp"
+  }  
+  
   target_tags = ["http"]
   source_ranges = ["0.0.0.0/0"]
 }
@@ -68,6 +73,11 @@ allow {
     protocol = "tcp"
     ports    = ["22"]
   }
+   
+  allow {
+    protocol = "icmp"
+  }  
+  
   target_tags = ["ssh"] 
   source_ranges = ["0.0.0.0/0"]
 }

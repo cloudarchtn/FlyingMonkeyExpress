@@ -169,7 +169,12 @@ resource "google_compute_instance" "default" {
   }
   allow_stopping_for_update = true
 
-//  metadata_startup_script = "echo hi > /test.txt"
+metadata_startup_script = <<SCRIPT
+#! bin/bash
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+SCRIPT
 
 }
 
@@ -196,6 +201,11 @@ resource "google_compute_instance" "tlp" {
   }
   allow_stopping_for_update = true
 
-//  metadata_startup_script = "echo hi > /test.txt"
+metadata_startup_script = <<SCRIPT
+#! bin/bash
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+SCRIPT
 
 }

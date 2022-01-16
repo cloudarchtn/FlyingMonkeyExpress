@@ -1,5 +1,4 @@
 
-terraform state rm "var.ADMIN_PROJECT"
 
 provider "google" {
   project = var.ADMIN_PROJECT
@@ -7,18 +6,6 @@ provider "google" {
   zone    = var.ZONE
   credentials = var.FME_ADMIN_CRED
 }
-
-//provider "google-beta" {
-//  project = var.ADMIN_PROJECT
-//  region  = var.REGION
-//  zone    = var.ZONE
-//  credentials = var.FME_ADMIN_CRED
-//}
-
-//resource "google_project_service" "admin_project" {
-//  project = var.ADMIN_PROJECT
-//  service = "compute.googleapis.com"
-//}
 
 #### Create vpc ######
 

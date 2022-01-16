@@ -90,6 +90,10 @@ variable "MACHINE_IMAGE" {
   type = string
   default = ""
 }
+variable "MACHINE_IMAGE2" {
+  type = string
+  default = ""
+}
 variable "FME_ADMIN_CRED" {
   type = string
   default = ""

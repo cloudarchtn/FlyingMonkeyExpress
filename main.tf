@@ -52,9 +52,6 @@ resource "google_compute_instance" "frontend" {
   name         = "test"
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE
-
-//  tags = ["foo", "bar"]
-
   boot_disk {
     initialize_params {
       image = var.MACHINE_IMAGE
@@ -75,9 +72,7 @@ resource "google_compute_instance" "frontend" {
     }
   }
 
-//  metadata = {
-    foo = "bar"
-  }
+//  metadata = {foo = "bar"}
 
   metadata_startup_script = "echo hi > /test.txt"
 

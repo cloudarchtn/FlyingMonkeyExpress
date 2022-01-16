@@ -19,8 +19,8 @@ resource "google_compute_network" "vpc_network" {
 }
 
 resource "google_compute_firewall" "internal-allow" {
-  network = google_compute_network.vpc_network.name
   name = var.FME_Firewall_Internal_Allow
+  network = google_compute_network.vpc_network.name
   
  allow {
     protocol = "icmp"
@@ -46,8 +46,8 @@ source_ranges = [
   }
 
 resource "google_compute_firewall" "tcp-allow" {
-  network = google_compute_network.vpc_network.name
   name = var.FME_Firewall_TCP_Allow
+  network = google_compute_network.vpc_network.name
   
 allow {
     protocol = "tcp"
@@ -57,8 +57,8 @@ allow {
 }
 
 resource "google_compute_firewall" "ssh-allow" {
-  network = google_compute_network.vpc_network.name
   name = var.FME_Firewall_SSH_Allow
+  network = google_compute_network.vpc_network.name
   
 allow {
     protocol = "ssh"

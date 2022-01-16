@@ -95,7 +95,7 @@ network = google_compute_network.vpc_network.name
 }
 
 
-/####### Create compute instances #####/
+####### Create compute instances #####
 
 resource "google_compute_instance" "default" {
   name         = var.FME_FRONTEND_NAME

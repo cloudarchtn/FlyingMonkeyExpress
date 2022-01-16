@@ -8,17 +8,17 @@ provider "google" {
   credentials = var.FME_ADMIN_CRED
 }
 
-provider "google-beta" {
-  project = var.ADMIN_PROJECT
-  region  = var.REGION
-  zone    = var.ZONE
-  credentials = var.FME_ADMIN_CRED
-}
+//provider "google-beta" {
+//  project = var.ADMIN_PROJECT
+//  region  = var.REGION
+//  zone    = var.ZONE
+//  credentials = var.FME_ADMIN_CRED
+//}
 
-resource "google_project_service" "admin_project" {
-  project = var.ADMIN_PROJECT
-  service = "compute.googleapis.com"
-}
+//resource "google_project_service" "admin_project" {
+//  project = var.ADMIN_PROJECT
+//  service = "compute.googleapis.com"
+//}
 
 #### Create vpc ######
 
@@ -173,12 +173,29 @@ resource "google_compute_instance" "default" {
 
 }
 
-###### deploy based on machine image
-resource "google_compute_instance_from_machine_image" "tpl" {
-  provider = google-beta
-  name     = "instance-from-machine-image"
-  zone     = "us-central1-a"
+resource "google_compute_instance" "default" {
+  name         = var.FME_BACKEND_NAME
+  machine_type = var.MACHINE_TYPE
+  zone         = var.ZONE
+ 
+  tags = ["http", "ssh", "icmp"]
+  
+  boot_disk {
+    initialize_params {
+      image = var.MACHINE_IMAGE
+    }
+  }
 
-  source_machine_image = var.MACHINE_IMAGE2
+  network_interface {
+    network = var.FME_NETWORK_NAME
+    subnetwork = var.FME_SN_3_NAME
+
+   // access_config {
+       // Ephemeral public IP
+   // }
+  }
+  allow_stopping_for_update = true
+
+//  metadata_startup_script = "echo hi > /test.txt"
+
 }
-

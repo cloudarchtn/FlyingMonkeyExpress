@@ -72,7 +72,8 @@ variable "INSTANCE_NAME" {
 }
 variable "ADMIN_PROJECT" {
   type = string
-  default = "flyingmonkeyadmin-338420"
+  // default = "flyingmonkeyadmin-338420"
+  default = ""
 }
 variable "APP_PROJECT" {
   type = string

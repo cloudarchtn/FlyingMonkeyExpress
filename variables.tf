@@ -3,6 +3,11 @@ variable "FME_Firewall_Internal_Allow" {
   type = string
   default = "fme-fw-internal-allow"
 }
+variable "FME_Firewall_ICMP_Allow" {
+  type = string
+  default = "fme-fw-icmp-allow"
+}
+
 
 variable "FME_Firewall_TCP_Allow" {
   type = string

@@ -53,6 +53,9 @@ resource "google_compute_instance" "default" {
   name         = var.FME_FRONTEND_NAME
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE
+ 
+  tags = ["http-server", "https-server"]
+  
   boot_disk {
     initialize_params {
       image = var.MACHINE_IMAGE
@@ -67,6 +70,7 @@ resource "google_compute_instance" "default" {
        // Ephemeral public IP
     }
   }
+  allow_stopping_for_update = true
 
 //  metadata_startup_script = "echo hi > /test.txt"
 
@@ -75,6 +79,9 @@ resource "google_compute_instance" "tpl" {
   name         = var.FME_BACKEND_NAME
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE
+  
+  tags = ["http-server", "https-server"]
+  
   boot_disk {
     initialize_params {
       image = var.MACHINE_IMAGE
@@ -90,6 +97,8 @@ resource "google_compute_instance" "tpl" {
    // }
   }
 
-//  metadata_startup_script = "echo hi > /test.txt"
+  allow_stopping_for_update = true
+  
+  //  metadata_startup_script = "echo hi > /test.txt"
 
 }

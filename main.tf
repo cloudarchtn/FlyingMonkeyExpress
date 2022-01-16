@@ -61,7 +61,7 @@ resource "google_compute_firewall" "ssh-allow" {
   network = google_compute_network.vpc_network.name
   
 allow {
-    protocol = "ssh"
+    protocol = "tcp"
     ports    = ["22"]
   }
   target_tags = ["ssh"] 

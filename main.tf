@@ -28,3 +28,16 @@ ip_cidr_range = var.FME_SN_2
 region = var.REGION
 network = google_compute_network.vpc_network.name
 }
+
+resource "google_compute_subnetwork" "private-subnetwork-1" {
+name = var.FME_SN_3_NAME
+ip_cidr_range = var.FME_SN_3
+region = var.REGION
+network = google_compute_network.vpc_network.name
+}
+resource "google_compute_subnetwork" "priave-subnetwork-2" {
+name = var.FME_SN_4_NAME
+ip_cidr_range = var.FME_SN_4
+region = var.REGION
+network = google_compute_network.vpc_network.name
+}

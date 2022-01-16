@@ -8,6 +8,13 @@ provider "google" {
   credentials = var.FME_ADMIN_CRED
 }
 
+provider "google-beta" {
+  project = var.ADMIN_PROJECT
+  region  = var.REGION
+  zone    = var.ZONE
+  credentials = var.FME_ADMIN_CRED
+}
+
 #### Create vpc ######
 
 resource "google_compute_network" "vpc_network" {  
@@ -160,7 +167,7 @@ resource "google_compute_instance" "default" {
 
 ###### deploy based on machine image
 resource "google_compute_instance_from_machine_image" "tpl" {
-//  provider = google-beta
+  provider = google-beta
   name     = "instance-from-machine-image"
   zone     = "us-central1-a"
 

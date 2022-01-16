@@ -7,6 +7,18 @@ variable "FME_SN_1_NAME" {
   type = string
   default = ""
 }
+variable "FME_SN_2_NAME" {
+  type = string
+  default = ""
+}
+variable "FME_SN_3_NAME" {
+  type = string
+  default = ""
+}
+variable "FME_SN_4_NAME" {
+  type = string
+  default = ""
+}
 
 variable "FME_SN_1" {
   type = string

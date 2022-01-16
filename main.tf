@@ -71,7 +71,7 @@ resource "google_compute_instance" "default" {
 //  metadata_startup_script = "echo hi > /test.txt"
 
 }
-resource "google_compute_instance" "default1" {
+resource "google_compute_instance"  {
   name         = var.FME_BACKEND_NAME
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE

@@ -45,7 +45,16 @@ source_ranges = [
   ]
   }
 
-  
+resource "google_compute_firewall" "icmp-allow" {
+  name = var.FME_Firewall_ICMP_Allow
+  network = google_compute_network.vpc_network.name
+   
+  allow {
+    protocol = "icmp"
+  } 
+  target_tags = ["icmp"]  
+  source_ranges = ["0.0.0.0/0"]
+}
 
 resource "google_compute_firewall" "tcp-allow" {
   name = var.FME_Firewall_TCP_Allow
@@ -53,18 +62,9 @@ resource "google_compute_firewall" "tcp-allow" {
   
 allow {
     protocol = "tcp"
-    ports    = ["80", "8080"]
+    ports    = ["80", "8080", "443"]
   }
-  
-  allow {
-    protocol = "icmp"
-  } 
-  
-  allow {
-    protocol = "udp"
-    ports    = ["0-65535"]
-  }
-  
+   
   target_tags = ["http"]
   source_ranges = ["0.0.0.0/0"]
 }
@@ -77,13 +77,9 @@ resource "google_compute_firewall" "ssh-allow" {
   
 allow {
     protocol = "tcp"
-    ports    = ["22","442"]
+    ports    = ["22"]
   }
-   
-  allow {
-    protocol = "icmp"
-  }  
-  
+
   target_tags = ["ssh"] 
   source_ranges = ["0.0.0.0/0"]
 }
@@ -124,7 +120,7 @@ resource "google_compute_instance" "default" {
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE
  
-  tags = ["http", "ssh"]
+  tags = ["http", "ssh", "icmp"]
   
   boot_disk {
     initialize_params {
@@ -150,7 +146,7 @@ resource "google_compute_instance" "tpl" {
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE
   
-  tags = ["http"]
+  tags = ["http","icmp","ssh"]
   
   boot_disk {
     initialize_params {

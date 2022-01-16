@@ -66,7 +66,7 @@ resource "google_compute_instance" "frontend" {
 
   network_interface {
     network = var.FME_NETWORK_NAME
-    subnetwork = var.var.FME_SN_1_NAME
+    subnetwork = var.FME_SN_1_NAME
 
     access_config {
        // Ephemeral public IP

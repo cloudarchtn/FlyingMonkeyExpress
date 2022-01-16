@@ -68,13 +68,13 @@ resource "google_compute_instance" "frontend" {
     subnetwork = var.var.FME_SN_1_NAME
 
     access_config {
-       Ephemeral public IP
+       // Ephemeral public IP
     }
   }
 
 //  metadata = {foo = "bar"}
 
-  metadata_startup_script = "echo hi > /test.txt"
+//  metadata_startup_script = "echo hi > /test.txt"
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.

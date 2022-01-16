@@ -44,6 +44,8 @@ source_ranges = [
   ]
   }
 
+  ****************/
+
 resource "google_compute_firewall" "tcp-allow" {
   name = var.FME_Firewall_TCP_Allow
   network = google_compute_network.vpc_network.name
@@ -52,10 +54,11 @@ allow {
     protocol = "tcp"
     ports    = ["80"]
   }
-  target_tags = ["http"] 
+  target_tags = ["http"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
-  ****************/
+
   
 resource "google_compute_firewall" "ssh-allow" {
   name = var.FME_Firewall_SSH_Allow

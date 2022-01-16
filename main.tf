@@ -15,6 +15,11 @@ provider "google-beta" {
   credentials = var.FME_ADMIN_CRED
 }
 
+resource "google_project_service" "admin_project" {
+  project = var.ADMIN_PROJECT
+  service = "compute.googleapis.com"
+}
+
 #### Create vpc ######
 
 resource "google_compute_network" "vpc_network" {  

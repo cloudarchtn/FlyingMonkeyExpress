@@ -2,7 +2,8 @@
 
 
 provider "google" {
-  project = var.ADMIN_PROJECT
+ // project = var.ADMIN_PROJECT
+  project = "flyingmonkeyadmin01"
   region  = var.REGION
   zone    = var.ZONE
   credentials = var.FME_ADMIN_CRED

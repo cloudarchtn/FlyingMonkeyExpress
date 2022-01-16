@@ -46,10 +46,6 @@ region = var.REGION
 network = google_compute_network.vpc_network.name
 }
 
-resource "google_service_account" "default" {
-  account_id   = "service_account_id"
-  display_name = "Service Account"
-}
 
 ####### Create compute instances #####
 
@@ -81,9 +77,4 @@ resource "google_compute_instance" "frontend" {
 
 //  metadata_startup_script = "echo hi > /test.txt"
 
-  service_account {
-    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = google_service_account.default.email
-    scopes = ["cloud-platform"]
-  }
 }

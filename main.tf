@@ -16,13 +16,13 @@ resource "google_compute_network" "vpc_network" {
     mtu = 0
 }
 
-resource "google_compute_subnetwork" "public-subnetwork" {
+resource "google_compute_subnetwork" "public-subnetwork-1" {
 name = var.FME_SN_1_NAME
 ip_cidr_range = var.FME_SN_1
 region = var.REGION
 network = google_compute_network.vpc_network.name
 }
-resource "google_compute_subnetwork" "public-subnetwork" {
+resource "google_compute_subnetwork" "public-subnetwork-2" {
 name = var.FME_SN_2_NAME
 ip_cidr_range = var.FME_SN_2
 region = var.REGION

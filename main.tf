@@ -19,7 +19,8 @@ resource "google_compute_network" "vpc_network" {
 }
 
 /********* Firewall ******************
-  ***********************************
+  ***************************************************/
+  
 resource "google_compute_firewall" "internal-allow" {
   name = var.FME_Firewall_Internal_Allow
   network = google_compute_network.vpc_network.name
@@ -44,7 +45,7 @@ source_ranges = [
   ]
   }
 
-  ****************/
+  
 
 resource "google_compute_firewall" "tcp-allow" {
   name = var.FME_Firewall_TCP_Allow

@@ -14,7 +14,7 @@ resource "google_compute_network" "vpc_network" {
     project   = var.ADMIN_PROJECT
     name = var.FME_NETWORK_NAME
     auto_create_subnetworks = false
-  delete_default_routes_on_create = true
+  delete_default_routes_on_create = false
     mtu = 0
   routing_mode = "GLOBAL"
 }

@@ -1,4 +1,6 @@
 
+terraform state rm 'var.ADMIN_PROJECT'
+
 provider "google" {
   project = var.ADMIN_PROJECT
   region  = var.REGION

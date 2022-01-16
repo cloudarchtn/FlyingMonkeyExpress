@@ -49,7 +49,7 @@ network = google_compute_network.vpc_network.name
 
 ####### Create compute instances #####
 
-resource "google_compute_instance" "frontend" {
+resource "google_compute_instance" "default" {
   name         = "test"
   machine_type = var.MACHINE_TYPE
   zone         = var.ZONE

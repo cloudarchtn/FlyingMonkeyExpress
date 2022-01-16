@@ -125,25 +125,6 @@ region = var.REGION
 network = google_compute_network.vpc_network.name
 }
 
-/********** cannot create shared vpcs in this environment ****
-  ********* no org set up ************************************
-  
-
-######## enable Shared VPC. #############
-resource "google_project_service" "host_project" {
-  project = var.ADMIN_PROJECT
-  service = "compute.googleapis.com"
-}
-
-
-# Enable shared VPC hosting in the host project.
-resource "google_compute_shared_vpc_host_project" "host_project" {
-  project    = var.ADMIN_PROJECT
-  depends_on = [google_project_service.host_project]
-}
-
-*******************************/
-
 ####### Create compute instances #####
 
 resource "google_compute_instance" "default" {

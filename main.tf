@@ -36,7 +36,7 @@ resource "google_compute_firewall" "internal-allow" {
   allow {
     protocol = "ssh"
     ports    = ["20,22"]
-    
+  } 
 source_ranges = [
     var.FME_SN_1,
     var.FME_SN_2,

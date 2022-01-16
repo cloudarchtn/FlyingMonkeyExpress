@@ -55,6 +55,8 @@ allow {
   target_tags = ["http"] 
 }
 
+  ****************/
+  
 resource "google_compute_firewall" "ssh-allow" {
   name = var.FME_Firewall_SSH_Allow
   network = google_compute_network.vpc_network.name
@@ -64,8 +66,9 @@ allow {
     ports    = ["22"]
   }
   target_tags = ["ssh"] 
+  source_ranges = ["0.0.0.0/0"]
 }
-  ****************/
+
 ##### Create subnets ########
 
 resource "google_compute_subnetwork" "public-subnetwork-1" {

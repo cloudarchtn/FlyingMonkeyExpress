@@ -119,10 +119,7 @@ resource "google_project_service" "host_project" {
   project = google_project.host_project.project_id
   service = "compute.googleapis.com"
 }
-resource "google_project_service" "service_project_1" {
-  project = google_project.service_project_1.project_id
-  service = "compute.googleapis.com"
-}
+
 
 # Enable shared VPC hosting in the host project.
 resource "google_compute_shared_vpc_host_project" "host_project" {
@@ -130,16 +127,7 @@ resource "google_compute_shared_vpc_host_project" "host_project" {
   depends_on = [google_project_service.host_project]
 }
 
-## enable shared vpc service project. 
-resource "google_compute_shared_vpc_service_project" "service_project_1" {
-  host_project    = google_project.host_project.project_id
-  service_project = var.APP_PROJECT
 
-  depends_on = [
-    google_compute_shared_vpc_host_project.host_project,
-    google_project_service.service_project_1,
-  ]
-}
 
 ####### Create compute instances #####
 

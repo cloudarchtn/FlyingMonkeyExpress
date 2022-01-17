@@ -1,4 +1,7 @@
 
+#### envoke TF GCP provider  ###
+#### declare admin project ###
+### default region and zone and admin project access key ###
 
 provider "google" {
   project = var.ADMIN_PROJECT

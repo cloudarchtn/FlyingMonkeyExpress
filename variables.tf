@@ -1,22 +1,5 @@
+### placeholder needed so that values can be passed from TF Cloud ###
 
-variable "FME_Firewall_Internal_Allow" {
-  type = string
-  default = "fme-fw-internal-allow"
-}
-variable "FME_Firewall_ICMP_Allow" {
-  type = string
-  default = "fme-fw-icmp-allow"
-}
-
-
-variable "FME_Firewall_TCP_Allow" {
-  type = string
-  default = "fme-fw-tcp-allow"
-}
-variable "FME_Firewall_SSH_Allow" {
-  type = string
-  default = "fme-fw-ssh-allow"
-}
 variable "FME_FRONTEND_NAME" {
   type = string
   default = ""
@@ -102,4 +85,23 @@ variable "FME_ADMIN_CRED" {
 variable "FME_APP_CRED" {
   type = string
   default = ""
+}
+### ok I cheated here and did not move the fw rule names over to TF Cloud ###
+variable "FME_Firewall_Internal_Allow" {
+  type = string
+  default = "fme-fw-internal-allow"
+}
+variable "FME_Firewall_ICMP_Allow" {
+  type = string
+  default = "fme-fw-icmp-allow"
+}
+
+
+variable "FME_Firewall_TCP_Allow" {
+  type = string
+  default = "fme-fw-tcp-allow"
+}
+variable "FME_Firewall_SSH_Allow" {
+  type = string
+  default = "fme-fw-ssh-allow"
 }

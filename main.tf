@@ -11,6 +11,8 @@ provider "google" {
 }
 
 #### Create vpc in Admin project ######
+### previous version has the code to set up shared vpn host and service projects ###
+### unable to complete that task due to missing org structure in gcp dev account ###
 
 resource "google_compute_network" "vpc_network" {  
     project   = var.ADMIN_PROJECT

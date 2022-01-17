@@ -1,6 +1,7 @@
 # FlyingMonkeyExpress
 
-This problem set is deceptively simple however the details does allow the developer skills to shine.  
+This problem set is deceptively simple however the details does allow the developer skills to shine. 
+I am fairly pleased with my progress, given I have not done any TF coding in a number of years and had no existing development environment.  The challenges presented are certainly not insurmountable and the progress was limited solely by the time restriction.
 There were a number of challenges encountered on this project
 <ol>
 <li>No local TF environment for development - this was solved by</li>

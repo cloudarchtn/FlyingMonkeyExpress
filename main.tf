@@ -129,6 +129,11 @@ network = google_compute_network.vpc_network.name
 ### given external IP ###
 ### script injected to install httpd on server ###
 ### allow instance to stop for upgrades ###
+### this instance was created using a public image supplied by GCP ###
+### the preferred method here would be to use a machine image that has been fully updated (upgraded) ###
+### and all the binaries needed for POC preinstalled but no configured ###
+### at that point the only script needed to run would be systemcld start httpd ###
+
 
 resource "google_compute_instance" "default" {
   name         = var.FME_FRONTEND_NAME

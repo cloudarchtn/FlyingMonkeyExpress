@@ -30,3 +30,6 @@ There were a number of challenges encountered on this project
         </ol>
     <li>All code developed sections were coded then tested and modified as needed to perform correctly</li>
 </p>
+<p>
+    The pre-req for this script would be that the Organization, folders and project already exist and are configured to match the company requirements
+    </p>

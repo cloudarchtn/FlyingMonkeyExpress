@@ -10,7 +10,7 @@ provider "google" {
   credentials = var.FME_ADMIN_CRED
 }
 
-#### Create vpc ######
+#### Create vpc in Admin project ######
 
 resource "google_compute_network" "vpc_network" {  
     project   = var.ADMIN_PROJECT
@@ -21,8 +21,10 @@ resource "google_compute_network" "vpc_network" {
   routing_mode = "GLOBAL"
 }
 
-/********* Firewall ******************
-  ***************************************************/
+###  Firewall ###
+
+### create fw for all internal traffic between subnets ###
+### this rule to be applied to all instances ###
   
 resource "google_compute_firewall" "internal-allow" {
   name = var.FME_Firewall_Internal_Allow
@@ -47,6 +49,8 @@ source_ranges = [
     var.FME_SN_4
   ]
   }
+ ### Create FW rule to allow ping traffic ###
+### this rule to be applied via network tagging ###
 
 resource "google_compute_firewall" "icmp-allow" {
   name = var.FME_Firewall_ICMP_Allow
@@ -58,6 +62,9 @@ resource "google_compute_firewall" "icmp-allow" {
   target_tags = ["icmp"]  
   source_ranges = ["0.0.0.0/0"]
 }
+
+### create fw rule to allow restricted tcp traffic from outside world ###
+### this rule to be applied via network tagging ###
 
 resource "google_compute_firewall" "tcp-allow" {
   name = var.FME_Firewall_TCP_Allow
@@ -72,8 +79,9 @@ allow {
   source_ranges = ["0.0.0.0/0"]
 }
 
+### create fw rule to allow restricted ssh traffic from outside world ###
+### this rule to be applied via network tagging ###
 
-  
 resource "google_compute_firewall" "ssh-allow" {
   name = var.FME_Firewall_SSH_Allow
   network = google_compute_network.vpc_network.name
@@ -116,6 +124,11 @@ network = google_compute_network.vpc_network.name
 }
 
 ####### Create compute instances #####
+## creates rhel7 instance in subnet 1. ###
+### instance allowed access to internet - tcp, ssh, icmp protocols ###
+### given external IP ###
+### script injected to install httpd on server ###
+### allow instance to stop for upgrades ###
 
 resource "google_compute_instance" "default" {
   name         = var.FME_FRONTEND_NAME
@@ -172,11 +185,11 @@ resource "google_compute_instance" "tlp" {
   }
   allow_stopping_for_update = true
 
-metadata_startup_script = <<SCRIPT
-#! bin/bash
-sudo yum install httpd -y
-sudo systemctl start httpd
-sudo systemctl enable httpd
-SCRIPT
+//metadata_startup_script = <<SCRIPT
+//#! bin/bash
+//sudo yum install httpd -y
+//sudo systemctl start httpd
+//sudo systemctl enable httpd
+//SCRIPT
 
 }

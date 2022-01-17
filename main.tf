@@ -132,7 +132,8 @@ network = google_compute_network.vpc_network.name
 ### this instance was created using a public image supplied by GCP ###
 ### the preferred method here would be to use a machine image that has been fully updated (upgraded) ###
 ### and all the binaries needed for POC preinstalled but no configured ###
-### at that point the only script needed to run would be systemcld start httpd ###
+### at that point the only script needed to run would be systemcld start httpd to start the apache server ###
+### and optionally add - systemctl enable httpd -- to make sure apache starts everytime the instance reboots ###
 
 
 resource "google_compute_instance" "default" {

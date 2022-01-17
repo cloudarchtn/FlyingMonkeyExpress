@@ -126,8 +126,8 @@ network = google_compute_network.vpc_network.name
 }
 
 ####### Create compute instances #####
-## creates rhel7 instance in subnet 1. ###
-### instance allowed access to internet - tcp, ssh, icmp protocols ###
+## creates rhel7 instance in subnets 1 and 3 ###
+### instances allowed access to internet - tcp, ssh, icmp protocols ###
 ### given external IP ###
 ### script injected to install httpd on server ###
 ### allow instance to stop for upgrades ###

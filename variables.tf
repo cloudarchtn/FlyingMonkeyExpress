@@ -1,4 +1,6 @@
 ### placeholder needed so that values can be passed from TF Cloud ###
+### a better way of creating variable would be to use string concatenation ###
+### to build standardized labeling and forcing all names to conform to formulas ###
 
 variable "FME_FRONTEND_NAME" {
   type = string

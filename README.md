@@ -27,4 +27,5 @@ There were a number of challenges encountered on this project
             <li>"sensitive" variable values are hidden from view and not shown in any code base or logs</li>
              <li>"sensitive" variables cannot be modified or viewed - only deleted and re-created</li>
         </ol>
+    <li>All code developed sections were coded then tested and modified as needed to perform correctly</li>
 </p>

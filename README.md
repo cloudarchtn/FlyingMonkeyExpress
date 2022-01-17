@@ -15,4 +15,11 @@ There were a number of challenges encountered on this project
    <li></li>
    <li></li>
     </ol>
+   <li>Initial versioning issues using published modules</li>
+     <ol>
+   <li>In order to preserve time for development modules were not included</li>
+   <li></li>
+   <li></li>
+   <li></li>
+    </ol>
 </ol>
